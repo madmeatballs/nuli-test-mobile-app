@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import candiceImage from '../assets/images/candice.png';
 import WorkoutHeader from '@/components/WorkoutHeader';
 import TrialBanner from '@/components/TrialBanner';
@@ -10,6 +10,9 @@ import WorkoutBodyFocus from '@/components/WorkoutBodyFocus';
 import WorkoutInstructions from '@/components/WorkoutInstructions';
 import WarmUpExercise from '@/components/WarmUpExercise';
 import StartWorkoutButton from '@/components/StartWorkoutButton';
+import ExerciseItem from '@/components/ExerciseItem';
+import Separator from '@/components/Separator';
+import ExerciseWrapper from '@/components/ExerciseWrapper';
 
 export enum Equipments {
   barbell = 'barbell',
@@ -81,6 +84,65 @@ const WorkoutOverview: React.FC = () => {
           <WorkoutInstructions />
         </ScrollView>
         <WarmUpExercise />
+        <View
+          style={{
+            paddingHorizontal: 10,
+            paddingTop: 10,
+            gap: 30,
+          }}
+        >
+          <View
+            style={{
+              paddingHorizontal: 25,
+              gap: 12,
+              alignItems: 'flex-start',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Text
+              style={{
+                color: 'rgba(38, 44, 69, 1)',
+                fontFamily: 'WorkSansSemibold',
+                fontSize: 24,
+              }}
+            >
+              Workout
+            </Text>
+            <Text
+              style={{
+                color: 'rgba(38, 44, 69, 1)',
+                fontFamily: 'WorkSansRegular',
+                fontSize: 14,
+                letterSpacing: 1,
+              }}
+            >
+              60 Min • 11 Exercises
+            </Text>
+          </View>
+          <View>
+            <View style={{ gap: 10 }}>
+              <View style={styles.supersetWrapper}>
+                <View>
+                  <Text style={styles.supersetBold}>
+                    SUPERSET <Text style={styles.supersetRegular}>•</Text> 3
+                    ROUNDS
+                  </Text>
+                </View>
+              </View>
+              <View>
+                <ExerciseWrapper borderColor="rgba(233, 233, 233, 1)">
+                  <ExerciseItem />
+                  <ExerciseItem />
+                </ExerciseWrapper>
+                <Separator color="rgba(233, 233, 233, 1)" />
+                <ExerciseWrapper borderColor="rgba(233, 233, 233, 1)">
+                  <ExerciseItem />
+                </ExerciseWrapper>
+                <Separator color="rgba(233, 233, 233, 1)" />
+              </View>
+            </View>
+          </View>
+        </View>
       </ScrollView>
       <StartWorkoutButton />
     </>
@@ -88,3 +150,23 @@ const WorkoutOverview: React.FC = () => {
 };
 
 export default WorkoutOverview;
+
+const styles = StyleSheet.create({
+  supersetWrapper: {
+    paddingHorizontal: 45,
+  },
+  supersetBold: {
+    fontFamily: 'WorkSansSemibold',
+    fontSize: 14,
+    lineHeight: 16.8,
+    color: 'rgba(61, 65, 86, 0.45)',
+    letterSpacing: 1,
+  },
+  supersetRegular: {
+    fontFamily: 'WorkSansRegular',
+    fontSize: 14,
+    lineHeight: 16.8,
+    color: 'rgba(61, 65, 86, 0.45)',
+    letterSpacing: 1,
+  },
+});

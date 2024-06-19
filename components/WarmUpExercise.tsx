@@ -7,6 +7,13 @@ import Animated, {
 } from 'react-native-reanimated';
 import ExerciseItem from './ExerciseItem';
 import { useState, useEffect } from 'react';
+import Separator from './Separator';
+import ExerciseWrapper from './ExerciseWrapper';
+
+// interface WarmUpExerciseProps {
+//   exercises: Exercise[];
+//   duration: number;
+// }
 
 const WarmUpExercise: React.FC = () => {
   const [warmUp, setWarmUp] = useState<boolean>(true);
@@ -56,24 +63,16 @@ const WarmUpExercise: React.FC = () => {
           </View>
           <View style={{ width: '100%' }}>
             {/* barbell */}
-            <View style={styles.exerciseContainer}>
+            <ExerciseWrapper>
               <ExerciseItem />
               <ExerciseItem />
-            </View>
+            </ExerciseWrapper>
             {/* separator for kinds of equipment??? */}
-            <View style={styles.separatorContainer}>
-              <View
-                style={{
-                  borderLeftWidth: 1,
-                  borderColor: 'white',
-                  flexGrow: 1,
-                }}
-              />
-            </View>
+            <Separator color="rgba(255,255,255,1)" />
             {/* deadlift */}
-            <View style={styles.exerciseContainer}>
+            <ExerciseWrapper>
               <ExerciseItem />
-            </View>
+            </ExerciseWrapper>
           </View>
         </Animated.View>
       </View>
@@ -134,19 +133,5 @@ const styles = StyleSheet.create({
     lineHeight: 16.8,
     color: 'rgba(61, 65, 86, 0.45)',
     letterSpacing: 1,
-  },
-  exerciseContainer: {
-    padding: 6,
-    gap: 12,
-    borderWidth: 1,
-    borderRadius: 28,
-    borderColor: 'rgba(255, 255, 255, 1)',
-    backgroundColor: 'rgba(255, 255, 255, 0.25)',
-    width: '100%',
-  },
-  separatorContainer: {
-    paddingHorizontal: 45,
-    height: 32,
-    // borderWidth: 1,
   },
 });
