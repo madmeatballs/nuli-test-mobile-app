@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import candiceImage from '../assets/images/candice.png';
 import WorkoutHeader from '@/components/WorkoutHeader';
@@ -13,6 +13,8 @@ import StartWorkoutButton from '@/components/StartWorkoutButton';
 import ExerciseItem from '@/components/ExerciseItem';
 import Separator from '@/components/Separator';
 import ExerciseWrapper from '@/components/ExerciseWrapper';
+import { useQuery } from '@apollo/client';
+import { WORKOUT_DATA } from '@/gql/workout';
 
 export enum Equipments {
   barbell = 'barbell',
@@ -53,6 +55,8 @@ const USERS: User[] = [
 ];
 
 const WorkoutOverview: React.FC = () => {
+  const { data, loading, error } = useQuery(WORKOUT_DATA);
+
   return (
     <>
       <ScrollView
